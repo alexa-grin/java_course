@@ -15,8 +15,7 @@ public class GroupCreationTests {
 
     @BeforeMethod
     public void setUp() throws Exception {
-        wd = wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-        ;
+        wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/");
         login("admin", "secret");
