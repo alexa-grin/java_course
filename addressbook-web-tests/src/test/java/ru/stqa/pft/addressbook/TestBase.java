@@ -1,14 +1,23 @@
-package ru.stqa.pft.addressbook.appmanager;
+package ru.stqa.pft.addressbook;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+<<<<<<< HEAD:addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/appmanager/ApplicationManager.java
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
 
+=======
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+import java.util.concurrent.TimeUnit;
+
+public class TestBase {
+>>>>>>> parent of 1e8f11c... Cоздан базовый класс ApplicationManager. Классы распределенны по пакетам tests, appmanager, model.:addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/TestBase.java
     FirefoxDriver wd;
 
     private SessionHelper sessionHelper;
@@ -16,7 +25,8 @@ public class ApplicationManager {
     private GroupHelper groupHelper;
 
 
-    public void init() {
+    @BeforeMethod
+    public void setUp() throws Exception {
         wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/");
@@ -27,6 +37,7 @@ public class ApplicationManager {
     }
 
 
+<<<<<<< HEAD:addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/appmanager/ApplicationManager.java
 
     public void stop() {
         wd.quit();
@@ -84,5 +95,46 @@ public class ApplicationManager {
 
     public void gotoAddNewPage() {
         wd.findElement(By.linkText("ADD_NEW")).click();
+=======
+    protected void returnToGroupPage() {
+        wd.findElement(By.linkText("group page")).click();
+    }
+
+    protected void submitGroupCreation() {
+        wd.findElement(By.name("submit")).click();
+    }
+
+    protected void fillGroupForm(GroupData groupData) {
+        wd.findElement(By.name("group_name")).click();
+        wd.findElement(By.name("group_name")).clear();
+        wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
+        wd.findElement(By.name("group_header")).click();
+        wd.findElement(By.name("group_header")).clear();
+        wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
+        wd.findElement(By.name("group_footer")).click();
+        wd.findElement(By.name("group_footer")).clear();
+        wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
+    }
+
+    protected void initGroupCreation() {
+        wd.findElement(By.name("new")).click();
+    }
+
+    protected void gotoGroupPage() {
+        wd.findElement(By.linkText("GROUPS")).click();
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        wd.quit();
+    }
+
+    protected void deleteSelectedGroups() {
+        wd.findElement(By.name("delete")).click();
+    }
+
+    protected void selectGroup() {
+        wd.findElement(By.name("selected[]")).click();
+>>>>>>> parent of 1e8f11c... Cоздан базовый класс ApplicationManager. Классы распределенны по пакетам tests, appmanager, model.:addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/TestBase.java
     }
 }

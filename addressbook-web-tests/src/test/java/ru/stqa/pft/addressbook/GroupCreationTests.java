@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook;
 
+<<<<<<< HEAD
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -30,6 +31,11 @@ public class GroupCreationTests {
         wd.findElement(By.name("pass")).sendKeys(password);
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
     }
+=======
+import org.testng.annotations.Test;
+
+public class GroupCreationTests extends TestBase{
+>>>>>>> parent of 1e8f11c... Cоздан базовый класс ApplicationManager. Классы распределенны по пакетам tests, appmanager, model.
 
     @Test
     public void testGroupCreation() {
@@ -40,6 +46,7 @@ public class GroupCreationTests {
         returnToGroupPage();
     }
 
+<<<<<<< HEAD
     private void returnToGroupPage() {
         wd.findElement(By.linkText("group page")).click();
     }
@@ -81,4 +88,6 @@ public class GroupCreationTests {
             return false;
         }
     }
+=======
+>>>>>>> parent of 1e8f11c... Cоздан базовый класс ApplicationManager. Классы распределенны по пакетам tests, appmanager, model.
 }
