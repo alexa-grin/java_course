@@ -11,6 +11,13 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
     FirefoxDriver wd;
 
+<<<<<<< HEAD
+=======
+    private SessionHelper sessionHelper;
+    private NavigationHelper navigationHelper ;
+    private GroupHelper groupHelper;
+
+>>>>>>> parent of d2ae426... Создан общий базовый класс HelperBase для классов-помощников
     public static boolean isAlertPresent(FirefoxDriver wd) {
         try {
             wd.switchTo().alert();
